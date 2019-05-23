@@ -1,13 +1,22 @@
 body {
   background-color: #D6F8FF;
+  align-items: center;
+  font-family: sans-serif;
 }
+
 p {
+  text-align: center;
   padding: 0;
   margin: 0;
 }
 
 h1 {
   text-align: center;
+  font-family: 'Hammersmith One';
+}
+
+h2 {
+  text-decoration: underline;
 }
 
 .col {
@@ -15,39 +24,31 @@ h1 {
   border: solid 1px;
   width: 100%;
   padding: 0px;
+  cursor: pointer;
 }
 
-/*
-.col0 {
-    background-color: red;
+#loginButton {
+  align-self: center;
 }
-.col1 {
-    background-color: green;
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
 }
-.col2 {
-    background-color: blue;
-}
-.col3 {
-    background-color: cyan;
-}
-.col4 {
-    background-color: purple;
-}
-.col5 {
-    background-color: yellow;
-}
-.col6 {
-    background-color: pink;
-}
-*/
+
 #schemaContainer {
   background-color: #D6F8FF;
   display: grid;
   grid-column-gap: 5px;
   grid-template-columns: repeat(7, 1fr);
-  padding: 0px 50px;
+  padding: 0px 50px 50px 50px;
+}
+
+.datum {
+  text-align: center;
 }
 
 .booked {
   background-color: green;
+  cursor: default;
 }

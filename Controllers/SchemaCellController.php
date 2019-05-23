@@ -4,15 +4,7 @@ class SchemaCellController extends Controller {
     //Hämta alla schemaCells en efter en och lägg in i en array med alla celler
     function index() {
         require(ROOT . 'Models/SchemaCell.php');
-        /*
-        $action = $_POST['action'];
-        $user = $_POST['username'];
-        $cellpk = $_POST['cell_pk'];
 
-        if ($action == "bookCell"){
-          bookSchemaCell($user, $cellpk);
-        }
-        */
         $cell = new SchemaCell();
 
         $day = date('w');
@@ -62,19 +54,18 @@ class SchemaCellController extends Controller {
 
     public function bookSchemaCell() {
       echo "BookSchemaCell";
-      $user = $_POST['username'];
-      $cell_pk = $_POST['cell_pk'];
+      $user    = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
+      $cell_pk = filter_input(INPUT_POST,'cell_pk',FILTER_SANITIZE_STRING);
+      $sql = "UPDATE booking SET user_fk = :user WHERE pk = :cellpk";
 
-        $sql = "UPDATE booking SET user_fk = :user WHERE pk = :cellpk";
+      $req = Database::getBdd()->prepare($sql);
 
-        $req = Database::getBdd()->prepare($sql);
+      $req->execute([
+          'user' => $user,
+          'cellpk' => $cell_pk
+      ]);
 
-        $req->execute([
-            'user' => $user,
-            'cellpk' => $cell_pk
-        ]);
-
-        echo json_encode(array("booked" => true));
+      echo json_encode(array("booked" => true));
     }
 }
 ?>

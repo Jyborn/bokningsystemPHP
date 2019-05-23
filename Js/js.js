@@ -35,8 +35,10 @@ window.onload = function() {
     var isCell = Number.isInteger(parseInt(target.id));
     if (isCell) {
       target.className = "booked";
+      //target.innerHTML += userPk;
     }
-    //skicka till db user som bokar och vilken cell som bokas med hjälp av pk
+
+    //skicka till db user som bokar och vilken cell som bokas med hjälp av  pk
     $.getJSON({
       type: 'POST',
       url: 'SchemaCell/bookSchemaCell',
