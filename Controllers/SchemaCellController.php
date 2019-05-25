@@ -56,6 +56,7 @@ class SchemaCellController extends Controller {
       echo "BookSchemaCell";
       $user    = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
       $cell_pk = filter_input(INPUT_POST,'cell_pk',FILTER_SANITIZE_STRING);
+
       $sql = "UPDATE booking SET user_fk = :user WHERE pk = :cellpk";
 
       $req = Database::getBdd()->prepare($sql);

@@ -22,9 +22,14 @@ h2 {
 .col {
   background-color: white;
   border: solid 1px;
+  border-bottom: 0px;
   width: 100%;
   padding: 0px;
   cursor: pointer;
+}
+
+.colContainer {
+  border-bottom: solid 1px;
 }
 
 #loginButton {
@@ -49,6 +54,6 @@ h2 {
 }
 
 .booked {
-  background-color: green;
+  background-color: red;
   cursor: default;
 }

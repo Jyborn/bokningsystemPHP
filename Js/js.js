@@ -3,6 +3,7 @@ window.onload = function() {
   let loginContainer = document.getElementById('loginContainer');
   let loginButton = document.getElementById('loginButton');
   let userPk;
+
   loginButton.addEventListener("click", function() {
     loginContainer.style.visibility = "visible";
   });
@@ -20,6 +21,12 @@ window.onload = function() {
           loginContainer.style.visibility = "hidden";
           loginButton.style.display = "none";
           userPk = data.user_pk;
+
+          let ptags = document.getElementsByClassName(userPk);
+          for (var i = 0; i < ptags.length; i++) {
+              ptags[i].style.backgroundColor = "green";
+          }
+
         } else {
           console.log("inte inloggad");
         }
@@ -35,7 +42,8 @@ window.onload = function() {
     var isCell = Number.isInteger(parseInt(target.id));
     if (isCell) {
       target.className = "booked";
-      //target.innerHTML += userPk;
+      target.className += " " + userPk;
+      target.style.backgroundColor = "green";
     }
 
     //skicka till db user som bokar och vilken cell som bokas med hjälp av  pk
@@ -44,7 +52,6 @@ window.onload = function() {
       url: 'SchemaCell/bookSchemaCell',
       data: {username: userPk, cell_pk: target.id},
       success: function(data){
-        console.log(data);
         if (data.booked == true) {
           console.log("bokad");
         } else {
